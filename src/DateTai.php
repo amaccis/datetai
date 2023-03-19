@@ -10,7 +10,6 @@ use Amaccis\DateTai\Tool\TimeStandardTool;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
-use DateTimeZone;
 use Exception;
 
 class DateTai implements DateTaiInterface
@@ -64,8 +63,8 @@ class DateTai implements DateTaiInterface
         $unixTimestamp = TaiTool::externalTaiFormatToUnixTimestamp($externalTaiFormatEnum, $externalTaiFormat);
         $datetime = sprintf('@%s', $unixTimestamp);
         return match ($dateTimeInterfaceEnum) {
-            DateTimeInterfaceEnum::DateTime => new DateTime($datetime, new DateTimeZone('UTC')),
-            DateTimeInterfaceEnum::DateTimeImmutable => new DateTimeImmutable($datetime, new DateTimeZone('UTC'))
+            DateTimeInterfaceEnum::DateTime => new DateTime($datetime),
+            DateTimeInterfaceEnum::DateTimeImmutable => new DateTimeImmutable($datetime)
         };
 
     }
