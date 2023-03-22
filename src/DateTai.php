@@ -19,7 +19,7 @@ class DateTai implements DateTaiInterface
      * @param DateTimeInterface $dateTimeInterface
      * @return DateTimeInterface
      */
-    public static function convertIntoUtc(DateTimeInterface $dateTimeInterface): DateTimeInterface
+    public static function convertTaiIntoUtc(DateTimeInterface $dateTimeInterface): DateTimeInterface
     {
 
         return TimeStandardTool::convert($dateTimeInterface, TimeStandardEnum::UTC);
@@ -30,7 +30,7 @@ class DateTai implements DateTaiInterface
      * @param DateTimeInterface $dateTimeInterface
      * @return DateTimeInterface
      */
-    public static function convertIntoTai(DateTimeInterface $dateTimeInterface): DateTimeInterface
+    public static function convertUtcIntoTai(DateTimeInterface $dateTimeInterface): DateTimeInterface
     {
 
         return TimeStandardTool::convert($dateTimeInterface, TimeStandardEnum::TAI);

@@ -3,6 +3,7 @@
     "type": "library",
     "description": "A PHP library that includes a set of tools for handling the TAI time standard with DateTime and DateTimeImmutable instances.",
     "keywords": [
+        "tai",
         "tai64",
         "tai64n",
         "tai64na",

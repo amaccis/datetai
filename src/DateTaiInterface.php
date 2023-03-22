@@ -9,9 +9,9 @@ use DateTimeInterface;
 interface DateTaiInterface
 {
 
-    public static function convertIntoUtc(DateTimeInterface $dateTimeInterface): DateTimeInterface;
+    public static function convertTaiIntoUtc(DateTimeInterface $dateTimeInterface): DateTimeInterface;
 
-    public static function convertIntoTai(DateTimeInterface $dateTimeInterface): DateTimeInterface;
+    public static function convertUtcIntoTai(DateTimeInterface $dateTimeInterface): DateTimeInterface;
 
     public static function formatAsExternalTaiFormat(DateTimeInterface $dateTimeInterface, ExternalTaiFormatEnum $externalTaiFormatEnum): string;
 

@@ -18,11 +18,11 @@ class TimeStandardToolTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testConvertTaiDateTime(string $taiDatetime, string $utcDatetime): void
+    public function testConvertTaiDateTimeIntoUtcDateTime(string $taiDatetime, string $utcDatetime): void
     {
 
         $taiDateTime = new DateTime($taiDatetime);
-        $utcDateTime = DateTai::convertIntoUtc($taiDateTime);
+        $utcDateTime = DateTai::convertTaiIntoUtc($taiDateTime);
         $this->assertInstanceOf(DateTime::class, $utcDateTime);
         $this->assertEquals($utcDatetime, $utcDateTime->format('Y-m-d H:i:s'));
 
@@ -35,11 +35,11 @@ class TimeStandardToolTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testConvertTaiDateTimeImmutable(string $taiDatetime, string $utcDatetime): void
+    public function testConvertTaiDateTimeImmutableIntoUtcDateTimeImmutable(string $taiDatetime, string $utcDatetime): void
     {
 
         $taiDateTimeImmutable = new DateTimeImmutable($taiDatetime);
-        $utcDateTimeImmutable = DateTai::convertIntoUtc($taiDateTimeImmutable);
+        $utcDateTimeImmutable = DateTai::convertTaiIntoUtc($taiDateTimeImmutable);
         $this->assertInstanceOf(DateTimeImmutable::class, $utcDateTimeImmutable);
         $this->assertEquals($utcDatetime, $utcDateTimeImmutable->format('Y-m-d H:i:s'));
 
@@ -52,11 +52,11 @@ class TimeStandardToolTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testConvertUtcDateTime(string $taiDatetime, string $utcDatetime): void
+    public function testConvertUtcDateTimeIntoTaiDateTime(string $taiDatetime, string $utcDatetime): void
     {
 
         $utcDateTime = new DateTime($utcDatetime);
-        $taiDateTime = DateTai::convertIntoTai($utcDateTime);
+        $taiDateTime = DateTai::convertUtcIntoTai($utcDateTime);
         $this->assertInstanceOf(DateTime::class, $taiDateTime);
         $this->assertEquals($taiDatetime, $taiDateTime->format('Y-m-d H:i:s'));
 
@@ -69,11 +69,11 @@ class TimeStandardToolTest extends TestCase
      * @return void
      * @throws Exception
      */
-    public function testConvertUtcDateTimeImmutable(string $taiDatetime, string $utcDatetime): void
+    public function testConvertUtcDateTimeImmutableIntoTaiDateTimeImmutable(string $taiDatetime, string $utcDatetime): void
     {
 
         $utcDateTimeImmutable = new DateTimeImmutable($utcDatetime);
-        $taiDateTimeImmutable = DateTai::convertIntoTai($utcDateTimeImmutable);
+        $taiDateTimeImmutable = DateTai::convertUtcIntoTai($utcDateTimeImmutable);
         $this->assertInstanceOf(DateTimeImmutable::class, $taiDateTimeImmutable);
         $this->assertEquals($taiDatetime, $taiDateTimeImmutable->format('Y-m-d H:i:s'));
 

@@ -1,19 +1,21 @@
 # DateTai
 
-[![PHP Version](https://img.shields.io/badge/php-%5E8.1-blue.svg)](https://img.shields.io/badge/php-%5E8.1-blue.svg)
+[![PHP Version](https://img.shields.io/badge/php-%5E8.1.7-blue.svg)](https://img.shields.io/badge/php-%5E8.1.7-blue.svg)
+![CI workflow](https://github.com/amaccis/datetai/actions/workflows/ci.yml/badge.svg)
+
 
 A PHP library including a set of tools for handling the TAI time standard with DateTime and DateTimeImmutable instances.
 
 For a basic knowledge of TAI [read this](https://en.wikipedia.org/wiki/International_Atomic_Time).
-For a basic knowledge of its external formats, TAI64, TAI64N and TAI64NA, [read this](https://cr.yp.to/libtai/tai64.html).
-Instead, for a basic knowledge of leap seconds [read this](https://maia.usno.navy.mil/information/what-is-a-leap-second).
+For a basic knowledge of TAI's external formats, that is TAI64, TAI64N and TAI64NA, [read this](https://cr.yp.to/libtai/tai64.html).
+Finally, for a basic knowledge of leap seconds [read this](https://maia.usno.navy.mil/information/what-is-a-leap-second).
 
-*Since DateTimeInterface does not handle nanoseconds, TAI64N format is partially supported by this library and the values are always rounded to microseconds. TAI64NA format 
-is not currently supported.*
+*Since DateTimeInterface does not handle nanoseconds, TAI64N format is partially supported by this library and the values are always rounded to microseconds. 
+For the same reason TAI64NA format is not currently supported.*
 
 ## Installation
 
-The library is available as a package on [Packagist](http://packagist.org/packages/amaccis/datetai), you can install it using [Composer](http://getcomposer.org)
+The library is available as a package on [Packagist](http://packagist.org/packages/amaccis/datetai), so you can install it using [Composer](http://getcomposer.org)
 ```shell
 composer require amaccis/datetai
 ```
@@ -28,11 +30,11 @@ composer require amaccis/datetai
     use DateTimeImmutable;
 
     $taiDateTime = new DateTime('1992-06-02 08:07:09');
-    $utcDateTime = DateTai::convertIntoUtc($taiDateTime);
+    $utcDateTime = DateTai::convertTaiIntoUtc($taiDateTime);
     var_dump($utcDateTime->format('Y-m-d H:i:s')); // 1992-06-02 08:06:43
 
     $taiDateTimeImmutable = new DateTimeImmutable('1992-06-02 08:07:09');
-    $utcDateTimeImmutable = DateTai::convertIntoUtc($taiDateTimeImmutable);
+    $utcDateTimeImmutable = DateTai::convertTaiIntoUtc($taiDateTimeImmutable);
     var_dump($utcDateTimeImmutable->format('Y-m-d H:i:s')); // 1992-06-02 08:06:43
 ```
 
@@ -44,11 +46,11 @@ composer require amaccis/datetai
     use DateTimeImmutable;
 
     $utcDateTime = new DateTime('1992-06-02 08:06:43');
-    $taiDateTime = DateTai::convertIntoUtc($taiDateTime);
+    $taiDateTime = DateTai::convertUtcIntoTai($utcDateTime);
     var_dump($taiDateTime->format('Y-m-d H:i:s')); // 1992-06-02 08:07:09
 
     $utcDateTimeImmutable = new DateTimeImmutable('1992-06-02 08:06:43');
-    $taiDateTimeImmutable = DateTai::convertIntoUtc($taiDateTimeImmutable);
+    $taiDateTimeImmutable = DateTai::convertUtcIntoTai($utcDateTimeImmutable);
     var_dump($taiDateTimeImmutable->format('Y-m-d H:i:s')); // 1992-06-02 08:07:09
 ```
 
