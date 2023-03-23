@@ -1,7 +1,7 @@
 {
     "name": "amaccis/datetai",
     "type": "library",
-    "description": "A PHP library that includes a set of tools for handling the TAI time standard with DateTime and DateTimeImmutable instances.",
+    "description": "A PHP library including a set of tools for handling the TAI time standard with DateTime and DateTimeImmutable instances.",
     "keywords": [
         "tai",
         "tai64",
